@@ -1,0 +1,23 @@
+extends base.pug
+
+block title
+    title Login Page
+
+block content
+    div.form-main
+        form(action="/login" method = "post") 
+            h3.mb-4 Login Page
+            div.mb-3.form-floating
+                input(type="email" placeholder="abc@gmail.com" name="username").form-control#email
+                label(for="email") Email Address
+            div.mb-3.form-floating
+                input(type="password" placeholder="Password" name="password").form-control#password
+                label(for="password") Password
+            if error && error.length > 0
+                div.message.text-danger * #{error}
+            if success && success.length > 0
+                div.message.text-primary * #{success}
+            button(type="submit").btn.btn-primary.btn-lg.w-100 Login
+        div(style = "text-align: center").mt-3 
+            p Don't have an account?  #[a(href="/register") Register]
+
